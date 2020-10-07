@@ -8,23 +8,22 @@ const TerserPlugin = require('terser-webpack-plugin') // minify js
 module.exports = {
 	mode: 'development',
 	devtool: 'eval-cheap-source-map',
-	devServer: { contentBase: './prod', port: 3000, hot: true },
+	devServer: { contentBase: path.join(__dirname, 'prod'), port: 3000, hot: true },
 
 	entry: {
-		index: './src/index.js'
+		index: path.join(__dirname, 'src/index.jsx')
 	},
 
 	output: {
-		filename: '[name].[hash].bundle.js', // for production use [contenthash], for developement use [hash]
-		path: path.resolve('./prod')
+		path: path.resolve(__dirname, './prod'),
+		filename: '[name].[hash].bundle.js' // for production use [contenthash], for developement use [hash]
 	},
 	plugins: [
 		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css', chunkFilename: '[id].[contenthash].css' }),
 		// new CleanWebpackPlugin(),
 		new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }), // tell webpack that we dont want to remove index.html after each update
 		new HtmlWebpackPlugin({
-			template: './index.html',
-			filename: 'index.html'
+			template: path.join(__dirname, 'index.html')
 		})
 	],
 
