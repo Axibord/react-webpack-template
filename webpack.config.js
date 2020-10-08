@@ -10,6 +10,9 @@ module.exports = {
 	devtool: 'eval-cheap-source-map',
 	devServer: { contentBase: path.join(__dirname, 'prod'), port: 3000, hot: true },
 
+	resolve: {
+		extensions: ['.js', '.jsx'] // we can import without typing '.js or .jsx'
+	},
 	entry: {
 		index: path.join(__dirname, 'src/index.jsx')
 	},
