@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from './components/HelloWorld/HelloWorld'
 
 const App = () => {
 	return (

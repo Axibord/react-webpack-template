@@ -4,6 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin') // clean the fold
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css to files
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') // minify css
 const TerserPlugin = require('terser-webpack-plugin') // minify js
+const tailwindcss = require('tailwindcss')
+const autoprefixer = require('autoprefixer') // help tailwindcss to work
 
 module.exports = {
 	mode: 'development',
@@ -49,8 +51,21 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(css|scss)$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
+				test: /\.(css|scss|sass)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader',
+					{
+						loader: 'postcss-loader', // postcss loader needed for tailwindcss
+						options: {
+							postcssOptions: {
+								ident: 'postcss',
+								plugins: [tailwindcss, autoprefixer]
+							}
+						}
+					}
+				]
 			},
 			{
 				test: /\.(png|svg|jpg|gif)$/i,
