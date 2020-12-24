@@ -11,5 +11,6 @@ module.exports = {
 		extend: {}
 	},
 	variants: {},
-	plugins: []
+	/* eslint-disable */
+	plugins: [require('@tailwindcss/forms')]
 }
