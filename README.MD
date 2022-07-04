@@ -1,3 +1,4 @@
+# DEPRECATED
 ## Boilerplate for React projects.
 
 Starter for React projects (JSX), using SASS/SCSS, Eslint, Prettier, TailwindcssV2 and more, all of this using Webpack.<br/>
